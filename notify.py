@@ -36,16 +36,16 @@ for index,date in enumerate(dates):
 
         for index,image in enumerate(images):
             res = requests.get(image['src'])
-            with open('./img/'+ str(index) + '.png','wb') as f:
+            with open('./images/'+ str(index) + '.png','wb') as f:
             #將圖片下載下來
                 f.write(res.content)
 
-            img = open('./img/'+ str(index) + '.png', 'rb') 
+            img = open('./images/'+ str(index) + '.png', 'rb') 
             files = {'imageFile': img}
             params = {"message": title + '案例' + str(index+1)}
             r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params, files=files)
             img.close() 
-            os.remove('./img/'+ str(index) + '.png')
+            os.remove('./images/'+ str(index) + '.png')
      
 print('finish')
 
