@@ -4,28 +4,16 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
-def lineNotifyMessage(token, msg):
-    headers = {
-        "Authorization": "Bearer " + token, 
-        "Content-Type" : "application/x-www-form-urlencoded"
-    }
+# #line setting
+load_dotenv()
+headers = {"Authorization": "Bearer " + os.getenv('line_token')}
 
-    massage = {'message': msg}
-    r = requests.post("https://notify-api.line.me/api/notify", headers = headers, params = massage)
-    return r.status_code
+is_prod = os.environ.get('IS_HEROKU', None)
+if is_prod:
+    headers = {"Authorization": "Bearer " + os.environ.get('line_token')}
 
-
-if __name__ == '__main__':
-  message = '[LINE Notify] Hello World (local)' 
-  load_dotenv()
-  token = os.getenv('line_token')
-
-  is_prod = os.environ.get('IS_HEROKU', None)
-  if is_prod:
-    token =  os.environ.get('line_token')
-    message = '[LINE Notify] Hello World (online)' 
-
-  lineNotifyMessage(token, message)
+params = {"message": 'heroku test'}
+r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params)
 
 # # 爬列表
 # #將網頁資料GET下來
