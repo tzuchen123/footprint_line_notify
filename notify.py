@@ -5,10 +5,15 @@ import os
 from dotenv import load_dotenv
 
 # #line setting
-# load_dotenv()
-# headers = {"Authorization": "Bearer " + os.getenv('line_token')}
-#for heroku
-headers = {"Authorization": "Bearer " + os.environ('line_token')}
+load_dotenv()
+headers = {"Authorization": "Bearer " + os.getenv('line_token')}
+
+is_prod = os.environ.get('IS_HEROKU', None)
+if is_prod:
+    headers = {"Authorization": "Bearer " + os.environ('line_token')}
+
+params = {"message": 'heroku test'}
+r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params)
 
 # # 爬列表
 # #將網頁資料GET下來
@@ -43,12 +48,6 @@ headers = {"Authorization": "Bearer " + os.environ('line_token')}
 #             files = {'imageFile': open('./img/'+ month + day + '/' + str(index) + '.png', 'rb')}
 #             params = {"message": title + '案例' + str(index+1)}
 #             r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params, files=files)
-
-
-
-params = {"message": 'heroku test'}
-r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params)
-
 
 
 
