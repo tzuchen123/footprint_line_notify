@@ -4,10 +4,11 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
-#line setting
-load_dotenv()
-headers = {"Authorization": "Bearer " + os.getenv('line_token')}
-
+# #line setting
+# load_dotenv()
+# headers = {"Authorization": "Bearer " + os.getenv('line_token')}
+#for heroku
+headers = {"Authorization": "Bearer " + os.environ('line_token')}
 
 # # 爬列表
 # #將網頁資料GET下來
