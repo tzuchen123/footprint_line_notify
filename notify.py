@@ -12,7 +12,7 @@ if is_prod:
     headers = {"Authorization": "Bearer " + os.environ.get('line_token')}
 
 # 爬列表
-#將網頁資料GET下來
+# 將網頁資料GET下來
 res = requests.get("https://www.gov.taipei/covid19/News.aspx?n=A626FBC2AB83E19F&sms=1A1B3A5B4DBDEDEB") 
 #將網頁資料以html.parser
 soup = BeautifulSoup(res.text,"html.parser")
@@ -37,16 +37,20 @@ for index,date in enumerate(dates):
         for index,image in enumerate(images):
             res = requests.get(image['src'])
             with open('./images/'+ str(index) + '.png','wb') as f:
-            #將圖片下載下來
+                #將圖片下載下來
                 f.write(res.content)
-
+            
+            #開圖片
             img = open('./images/'+ str(index) + '.png', 'rb') 
+            #傳line
             files = {'imageFile': img}
             params = {"message": title + '案例' + str(index+1)}
             r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params, files=files)
-            img.close() 
+            #關圖片
+            img.close()
+            #刪圖片 
             os.remove('./images/'+ str(index) + '.png')
-     
+
 print('finish')
 
 
