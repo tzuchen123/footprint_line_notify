@@ -1,1 +1,0 @@
-worker: python notify.py
