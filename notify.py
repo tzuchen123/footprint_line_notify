@@ -33,7 +33,7 @@ for index,date in enumerate(dates):
         res = requests.get(url) 
         soup = BeautifulSoup(res.text,"html.parser")
         images = soup.select("div.p span img") 
-        # 下載圖片
+
         for index,image in enumerate(images):
             res = requests.get(image['src'])
             with open('./img/'+ str(index) + '.png','wb') as f:
