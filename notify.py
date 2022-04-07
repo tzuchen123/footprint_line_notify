@@ -16,13 +16,15 @@ def lineNotifyMessage(token, msg):
 
 
 if __name__ == '__main__':
-  message = '[LINE Notify] Hello World' 
+  message = '[LINE Notify] Hello World (local)' 
   load_dotenv()
   token = os.getenv('line_token')
 
   is_prod = os.environ.get('IS_HEROKU', None)
   if is_prod:
     token =  os.environ('line_token')
+    message = '[LINE Notify] Hello World (online)' 
+
   lineNotifyMessage(token, message)
 
 # # 爬列表
