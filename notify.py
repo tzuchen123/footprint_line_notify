@@ -35,16 +35,19 @@ for index,date in enumerate(dates):
         images = soup.select("div.p span img") 
         # 下載圖片
         for index,image in enumerate(images):
-            #創建目錄
-            os.makedirs('./img/' + month + day, exist_ok=True)
             res = requests.get(image['src'])
-            with open('./img/'+ month + day + '/' + str(index) + '.png','wb') as image:
+            with open('./img/'+ str(index) + '.png','wb') as f:
             #將圖片下載下來
-                image.write(res.content)        
-            files = {'imageFile': open('./img/'+ month + day + '/' + str(index) + '.png', 'rb')}
+                f.write(res.content)
+
+            img = open('./img/'+ str(index) + '.png', 'rb') 
+            files = {'imageFile': img}
             params = {"message": title + '案例' + str(index+1)}
             r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params, files=files)
-
+            img.close() 
+            os.remove('./img/'+ str(index) + '.png')
+     
+print('finish')
 
 
 
