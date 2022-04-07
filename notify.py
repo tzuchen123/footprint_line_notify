@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
   is_prod = os.environ.get('IS_HEROKU', None)
   if is_prod:
-    token =  os.environ('line_token')
+    token =  os.environ.get('line_token')
     message = '[LINE Notify] Hello World (online)' 
 
   lineNotifyMessage(token, message)
