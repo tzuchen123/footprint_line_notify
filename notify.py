@@ -4,6 +4,7 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
+print('hello world!')
 # #line setting
 load_dotenv()
 headers = {"Authorization": "Bearer " + os.getenv('line_token')}
