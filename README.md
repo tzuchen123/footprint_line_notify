@@ -49,3 +49,11 @@ $ pip install python-dotenv
 
 #### Add-ons
 搜尋Heroku Scheduler 並安裝，用來設定定時排程。會依照schedule去 Run Command。
+
+#### heroku log
+如果一直不能work，Open app 旁邊的More點下去，View logs。
+<br>
+<small>
+給像我一樣懶得下載heroku cli，又眼殘沒發現的人。
+
+
