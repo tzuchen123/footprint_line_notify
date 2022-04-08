@@ -32,7 +32,7 @@ $ pip install python-dotenv
 $ pip install python-dotenv
 ```
 - runtime.txt
-用來標示使用的程式語言運行環境與版本。
+<br>用來標示使用的程式語言運行環境與版本。
 [這裡查目前支援的版本](https://devcenter.heroku.com/articles/python-support#supported-python-runtimes)
 
 ### 設定heroku Config Vars
@@ -54,6 +54,5 @@ $ pip install python-dotenv
 如果一直不能work，Open app 旁邊的More點下去，View logs。
 <br>
 <small>
-給像我一樣懶得下載heroku cli，又眼殘沒發現的人。
-
+~~給像我一樣懶得下載heroku cli，又眼殘沒發現的人。
 
