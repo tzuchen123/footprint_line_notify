@@ -4,19 +4,22 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 
-# #line setting
+def crawler(url):
+    # 獲得網頁資料
+    res = requests.get(url) 
+    #將網頁資料以html.parser
+    soup = BeautifulSoup(res.text,"html.parser")
+    return soup
+
+#line setting
 load_dotenv()
 headers = {"Authorization": "Bearer " + os.getenv('line_token')}
 is_prod = os.environ.get('IS_HEROKU', None)
 if is_prod:
     headers = {"Authorization": "Bearer " + os.environ.get('line_token')}
 
-# 爬列表
-# 將網頁資料GET下來
-res = requests.get("https://www.gov.taipei/covid19/News.aspx?n=A626FBC2AB83E19F&sms=1A1B3A5B4DBDEDEB") 
-#將網頁資料以html.parser
-soup = BeautifulSoup(res.text,"html.parser")
 
+soup = crawler("https://www.gov.taipei/covid19/News.aspx?n=A626FBC2AB83E19F&sms=1A1B3A5B4DBDEDEB")
 urls = soup.select("td.CCMS_jGridView_td_Class_1 span a") 
 dates = soup.select("td.CCMS_jGridView_td_Class_2 span") 
 
@@ -30,8 +33,7 @@ for index,date in enumerate(dates):
         url = 'https://www.gov.taipei/covid19/' + urls[index]['href']
         title = urls[index].text
         # 爬圖片
-        res = requests.get(url) 
-        soup = BeautifulSoup(res.text,"html.parser")
+        soup = crawler(url)
         images = soup.select("div.p span img") 
 
         for index,image in enumerate(images):
