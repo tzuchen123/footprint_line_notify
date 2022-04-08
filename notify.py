@@ -1,3 +1,4 @@
+#coding=UTF-8
 import requests
 from bs4 import BeautifulSoup 
 from datetime import datetime
@@ -38,12 +39,12 @@ for index,date in enumerate(dates):
 
         for index,image in enumerate(images):
             res = requests.get(image['src'])
-            with open('./images/'+ str(index) + '.png','wb') as f:
+            with open(str(index) + '.png','wb') as f:
                 #將圖片下載下來
                 f.write(res.content)
             
             #開圖片
-            img = open('./images/'+ str(index) + '.png', 'rb') 
+            img = open(str(index) + '.png', 'rb') 
             #傳line
             files = {'imageFile': img}
             params = {"message": title + '案例' + str(index+1)}
@@ -51,7 +52,7 @@ for index,date in enumerate(dates):
             #關圖片
             img.close()
             #刪圖片 
-            os.remove('./images/'+ str(index) + '.png')
+            os.remove(str(index) + '.png')
 
 print('finish')
 

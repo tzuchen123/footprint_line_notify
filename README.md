@@ -29,7 +29,7 @@ $ pip install python-dotenv
 - requirements.txt
     <br>專案所需的套件，可打指令顯示當前這台電腦所安裝的所有套件。
 ```
-$ pip install python-dotenv
+$ pip3 freeze
 ```
 - runtime.txt
 <br>用來標示使用的程式語言運行環境與版本。
