@@ -27,12 +27,12 @@ dates = soup.select("td.CCMS_jGridView_td_Class_2 span")
 month = datetime.today().strftime('%m')
 day = datetime.today().strftime('%d')
 
-for index,date in enumerate(dates):
+for row_index,date in enumerate(dates):
     split_date = date.text.split("-")
     # 判斷是否今天
     if(split_date[2] == day and split_date[1] == month ):
-        url = 'https://www.gov.taipei/covid19/' + urls[index]['href']
-        title = urls[index].text
+        url = 'https://www.gov.taipei/covid19/' + urls[row_index]['href']
+        title = urls[row_index].text
         # 爬圖片
         soup = crawler(url)
         images = soup.select("div.p span img") 
@@ -47,7 +47,7 @@ for index,date in enumerate(dates):
             img = open(str(index) + '.png', 'rb') 
             #傳line
             files = {'imageFile': img}
-            params = {"message": title + '案例' + str(index+1)}
+            params = {"message": '第' + str(row_index +1 ) +'篇' + title + '案例' + str(index+1)}
             r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params, files=files)
             #關圖片
             img.close()
