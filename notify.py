@@ -40,7 +40,7 @@ db = pymysql.connect(host=os.environ.get('db_host'),
                     password=os.environ.get('db_password'),
                     database=os.environ.get('db_database'))
 
-if datetime.today().strftime('%H') == '01':
+if datetime.today().strftime('%H') == '05':
     setStatus(0)
 
 else:   
@@ -83,4 +83,4 @@ else:
                 setStatus(1)
 # # 关闭数据库连接
 db.close()
-print('finish')
+print(datetime.today().strftime('%H'))
