@@ -1,6 +1,4 @@
 #coding=UTF-8
-from pickle import TRUE
-from tkinter import FALSE
 import requests
 from bs4 import BeautifulSoup 
 from datetime import datetime
