@@ -1,7 +1,7 @@
 #coding=UTF-8
 import requests
 from bs4 import BeautifulSoup 
-from datetime import datetime
+from datetime import datetime,timezone,timedelta
 import os
 from dotenv import load_dotenv
 import pymysql
@@ -40,7 +40,9 @@ db = pymysql.connect(host=os.environ.get('db_host'),
                     password=os.environ.get('db_password'),
                     database=os.environ.get('db_database'))
 
-if datetime.today().strftime('%H') == '17':
+utc_time = datetime.utcnow().replace(tzinfo=timezone.utc)
+tw_time = utc_time.astimezone(timezone(timedelta(hours=8))) # 轉換時區 -> 東八區
+if tw_time.strftime('%H') == '01':
     setStatus(0)
 
 else:   
@@ -51,8 +53,8 @@ else:
         urls = soup.select("td.CCMS_jGridView_td_Class_1 span a") 
         dates = soup.select("td.CCMS_jGridView_td_Class_2 span") 
 
-        month = datetime.today().strftime('%m')
-        day = datetime.today().strftime('%d')
+        month = tw_time.strftime('%m')
+        day = tw_time.strftime('%d')
 
         for row_index,date in enumerate(dates):
             split_date = date.text.split("-")
