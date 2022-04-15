@@ -81,8 +81,8 @@ else:
                     img.close()
                     #刪圖片 
                     os.remove(str(index) + '.png')
-
                 setStatus(1)
 # 关闭数据库连接
 db.close()
+print(status)
 print('finish')
