@@ -27,9 +27,14 @@ $ pip install python-dotenv
 專案裡面都寫了，簡單解說如下。
 - Procfile
 - requirements.txt
-    <br>專案所需的套件，可打指令顯示當前這台電腦所安裝的所有套件。
+    <br>專案所需的套件。
 ```
+<!-- 顯示當前這台電腦所安裝的所有套件 -->
 $ pip3 freeze
+```    
+```
+<!-- 安裝文件中的套件 -->
+$ pip3 install -r requirements.txt
 ```
 - runtime.txt
 <br>用來標示使用的程式語言運行環境與版本。
