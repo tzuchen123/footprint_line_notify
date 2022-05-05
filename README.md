@@ -53,7 +53,8 @@ $ pip3 install -r requirements.txt
 內容就是寫在Procfile的command，每次push都會執行一次，如果不想要每次push都執行一次，記得改off。
 
 #### Add-ons
-搜尋Heroku Scheduler 並安裝，用來設定定時排程。會依照schedule去 Run Command。
+搜尋Heroku Scheduler 並安裝，用來設定定時排程。會依照schedule去 Run Command。<br>
+搜尋JawsDB MySQL free mysql db。
 
 #### heroku log
 如果一直不能work，Open app 旁邊的More點下去，View logs。
