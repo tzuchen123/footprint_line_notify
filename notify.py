@@ -62,6 +62,7 @@ else:
             if(split_date[2] == day and split_date[1] == month ):
                 url = 'https://www.gov.taipei/covid19/' + urls[row_index]['href']
                 title = urls[row_index].text
+                print(urls)
                 # 爬圖片
                 soup = crawler(url)
                 images = soup.select("div.p span img") 
@@ -85,4 +86,9 @@ else:
 # 关闭数据库连接
 db.close()
 print(status)
+
+# headers = {"Authorization": "Bearer " + os.environ.get('line_token')}
+# params = {"message": 'test'}
+# r = requests.post("https://notify-api.line.me/api/notify",headers=headers, params=params)
+
 print('finish')
