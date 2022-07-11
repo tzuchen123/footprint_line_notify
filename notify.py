@@ -9,8 +9,7 @@ import pymysql
 
 def demo():
     # 獲得網頁資料
-    1231212312
-    return 123
+    return 2222222
     
 def crawler(url):
     # 獲得網頁資料
