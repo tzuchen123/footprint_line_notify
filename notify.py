@@ -6,7 +6,10 @@ import os
 from dotenv import load_dotenv
 import pymysql
 
-
+def demo():
+    # 獲得網頁資料
+    return 123
+    
 def crawler(url):
     # 獲得網頁資料
     res = requests.get(url) 
