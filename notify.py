@@ -6,6 +6,9 @@ import os
 from dotenv import load_dotenv
 import pymysql
 
+# 2q342342
+# 2q342342# 2q342342
+# 2q342342
 
 def crawler(url):
     # 獲得網頁資料
