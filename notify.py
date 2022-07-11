@@ -6,6 +6,7 @@ import os
 from dotenv import load_dotenv
 import pymysql
 
+
 def demo():
     # 獲得網頁資料
     1231212312
