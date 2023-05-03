@@ -1,6 +1,5 @@
 # 使用line notify 每日自動通知確診足跡
-幫朋友寫的小玩具，每天去網站爬確診個案公共場域活動史，並用line notify 傳送。主要寫的語言非python，程式碼多是辜狗來的，再湊成一台拼裝車，故可能有很奇怪的地方。
-<br>簡單紀錄網上比較少寫到的地方，供之後回憶用。
+幫朋友寫的小玩具，每天去網站爬確診個案公共場域活動史，並用line notify 傳送，簡單紀錄之。
 
 1. 爬蟲
 1. line notify
@@ -59,6 +58,5 @@ $ pip3 install -r requirements.txt
 #### heroku log
 如果一直不能work，Open app 旁邊的More點下去，View logs。
 <br>
-<small>
-~~給像我一樣懶得下載heroku cli，又眼殘沒發現的人。
+<small>居然一直眼殘沒發現，筆記一下</small>
 
